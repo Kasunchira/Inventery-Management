@@ -1,5 +1,6 @@
 package com.example.InventoryMgtSystem.enums;
 
-public class TransactionType {
+public enum TransactionType {
+     PURCHASE, SALE, RETURN_TO_SUPPLIER
 
 }

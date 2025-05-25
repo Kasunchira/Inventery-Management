@@ -1,5 +1,6 @@
 package com.example.InventoryMgtSystem.enums;
 
-public class UserRole {
+public enum UserRole {
+    ADMIN,MANAGER
 
 }
