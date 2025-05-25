@@ -28,10 +28,10 @@ public class Transaction {
     private BigDecimal totalPrice;
 
     @Enumerated(EnumType.STRING)
-    private TransactionType transactionType; // pruchase, sale, return
+    private TransactionType transactionType; 
 
     @Enumerated(EnumType.STRING)
-    private TransactionStatus status; //pending, completed, processing
+    private TransactionStatus status; 
 
     private String description;
     private String note;
