@@ -2,23 +2,19 @@ import React, { useState, useEffect } from "react";
 import Layout from "../component/Layout";
 import ApiService from "../service/ApiService";
 
-const PurchasePage = () => {
+const SellPage = () => {
   const [products, setProducts] = useState([]);
-  const [suppliers, setSuppliers] = useState([]);
   const [productId, setProductId] = useState("");
-  const [supplierId, setSuppplierId] = useState("");
   const [description, setDescription] = useState("");
   const [note, setNote] = useState("");
   const [quantity, setQuantity] = useState("");
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    const fetchproductsAndSuppliers = async () => {
+    const fetchProducts = async () => {
       try {
         const productData = await ApiService.getAllProducts();
-        const supplierData = await ApiService.getAllSuppliers();
         setProducts(productData.products);
-        setSuppliers(supplierData.suppliers);
       } catch (error) {
         showMessage(
           error.response?.data?.message || "Error Getting Products: " + error
@@ -26,44 +22,39 @@ const PurchasePage = () => {
       }
     };
 
-    fetchproductsAndSuppliers();
+    fetchProducts();
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!productId || !supplierId || !quantity) {
+    if (!productId || !quantity) {
       showMessage("Please fill in all required fields");
       return
     }
     const body = {
       productId,
       quantity: parseInt(quantity),
-      supplierId,
-      description,
-      note,
+  
     };
-    console.log(body)
 
     try {
-      const respone = await ApiService.purchaseProduct(body);
+      const respone = await ApiService.sellProduct(body);
       showMessage(respone.message);
       resetForm();
     } catch (error) {
       showMessage(
-        error.response?.data?.message || "Error Purchasing Products: " + error
+        error.response?.data?.message || "Error Selling Product: " + error
       );
     }
   };
 
   const resetForm = () => {
     setProductId("");
-    setSuppplierId("");
     setDescription("");
     setNote("");
     setQuantity("");
   };
-
 
   const showMessage = (msg) => {
     setMessage(msg);
@@ -76,7 +67,7 @@ const PurchasePage = () => {
     <Layout>
       {message && <div className="message">{message}</div>}
       <div className="purchase-form-page">
-        <h1>Receive Inventory</h1>
+        <h1>Sell Product</h1>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Select product</label>
@@ -95,21 +86,15 @@ const PurchasePage = () => {
             </select>
           </div>
 
-          <div className="form-group">
-            <label>Select Supplier</label>
 
-            <select
-              value={supplierId}
-              onChange={(e) => setSuppplierId(e.target.value)}
+          <div className="form-group">
+            <label>Quantity</label>
+            <input
+              type="number"
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
               required
-            >
-              <option value="">Select a supplier</option>
-              {suppliers.map((supplier) => (
-                <option key={supplier.id} value={supplier.id}>
-                  {supplier.name}
-                </option>
-              ))}
-            </select>
+            />
           </div>
 
           <div className="form-group">
@@ -132,20 +117,11 @@ const PurchasePage = () => {
             />
           </div>
 
-          <div className="form-group">
-            <label>Quantity</label>
-            <input
-              type="number"
-              value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
-              required
-            />
-          </div>
 
-          <button type="submit">Purchase Product</button>
+          <button type="submit">Sell Product</button>
         </form>
       </div>
     </Layout>
   );
 };
-export default PurchasePage;
+export default SellPage;
