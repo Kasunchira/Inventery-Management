@@ -1,19 +1,22 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ProtectedRoute, AdminRoute } from "./service/Guard";
-import RegisterPage from "./pages/RegisterPage";
-import LoginPage from "./pages/LoginPage";
-import CategoryPage from "./pages/CategoryPage";
-import SupplierPage from "./pages/SupplierPage";
-import AddEditSupplierPage from "./pages/AddEditSupplierPage";
-import ProductPage from "./pages/ProductPage";
-import AddEditProductPage from "./pages/AddEditProductPage";
-import PurchasePage from "./pages/PurchasePage";
-import SellPage from "./pages/SellPage";
-import TransactionsPage from "./pages/TransactionsPage";
-import TransactionDetailsPage from "./pages/TransactionDetailsPage";
-import ProfilePage from "./pages/ProfilePage";
-import DashboardPage from "./pages/DashboardPage";
+import RegisterPage from "./pages/RegisterPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import CategoryPage from "./pages/CategoryPage.jsx";
+import SupplierPage from "./pages/SupplierPage.jsx";
+import AddEditSupplierPage from "./pages/AddEditSupplierPage.jsx";
+import ProductPage from "./pages/ProductPage.jsx";
+import AddEditProductPage from "./pages/AddEditProductPage.jsx";
+import PurchasePage from "./pages/PurchasePage.jsx";
+import SellPage from "./pages/SellPage.jsx";
+import TransactionsPage from "./pages/TransactionsPage.jsx";
+import TransactionDetailsPage from "./pages/TransactionDetailsPage.jsx";
+import ProfilePage from "./pages/ProfilePage.jsx";
+import DashboardPage from "./pages/DashboardPage.jsx";
+//import Layout from "./component/Layout.jsx"; 
+//import SideBar from "./component/SideBar.jsx";
+
 
 
 function App() {

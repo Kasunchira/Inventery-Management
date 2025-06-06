@@ -1,12 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom/dist/index.d.mts";
+import { Link } from "react-router-dom";
 import ApiService from "../service/ApiService";
 
 const logout = () => {
   ApiService.logout();
 };
 
-const Sidebar = () => {
+const SideBar = () => {
   const isAuth = ApiService.isAuthenticated();
   const isAdmin = ApiService.isAdmin();
 
@@ -16,7 +16,7 @@ const Sidebar = () => {
       <ul className="nav-links">
         {isAuth && (
           <li>
-            <Link to="/dashboard">Dashboaard</Link>
+            <Link to="/dashboard">Dashboard</Link>
           </li>
         )}
 
@@ -64,9 +64,14 @@ const Sidebar = () => {
 
         {isAuth && (
           <li>
-            <Link onClick={logout} to="/login">
+            <button
+              onClick={() => {
+                logout();
+                window.location.href = "/login";
+              }}
+            >
               Logout
-            </Link>
+            </button>
           </li>
         )}
       </ul>
@@ -74,4 +79,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default SideBar;
