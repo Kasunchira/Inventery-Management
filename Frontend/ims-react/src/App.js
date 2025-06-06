@@ -23,18 +23,15 @@ function App() {
         <Route path="/register" element={<RegisterPage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
 
-        {/* ADMIN ROUTES */}
         <Route path="/category" element={<AdminRoute element={<CategoryPage/>}/>}/>
         <Route path="/supplier" element={<AdminRoute element={<SupplierPage/>}/>}/>
         <Route path="/add-supplier" element={<AdminRoute element={<AddEditSupplierPage/>}/>}/>
         <Route path="/edit-supplier/:supplierId" element={<AdminRoute element={<AddEditSupplierPage/>}/>}/>
         <Route path="/product" element={<AdminRoute element={<ProductPage/>}/>}/>
 
-
         <Route path="/add-product" element={<AdminRoute element={<AddEditProductPage/>}/>}/>
         <Route path="/edit-product/:productId" element={<AdminRoute element={<AddEditProductPage/>}/>}/>
 
-          {/* ADMIN AND MANAGERS ROUTES */}
         <Route path="/purchase" element={<ProtectedRoute element={<PurchasePage/>}/>}/>
         <Route path="/sell" element={<ProtectedRoute element={<SellPage/>}/>}/>
         <Route path="/transaction" element={<ProtectedRoute element={<TransactionsPage/>}/>}/>
