@@ -1,7 +1,7 @@
 import React from "react";
 
 const PaginationComponent = ({currentPage, totalPages, onPageChange}) =>{
-    //Generate page numbers based on total pages
+
     const pageNumbers = Array.from({length: totalPages}, (_, i) => i+1);
 
     return(
